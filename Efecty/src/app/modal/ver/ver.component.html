@@ -1,0 +1,36 @@
+<h2><strong  style="margin-left: 50px;">     Persona</strong></h2>
+<div class="content" style="margin-left: 50px;">
+<form [formGroup]="formPersona" (ngSubmit)="onSubmit()">
+    <div class="col-6 form-group" >
+      <label >Tipo Documento</label>
+      <select class="col-6 form-control" formControlName="tipoDocumento" >
+        <option  value="0" >-- Seleccione --</option> 
+        <option *ngFor="let p of TipoDoc" [value]="p.id"  >{{p.descripcion}} </option> 
+      </select> 
+    </div>
+    <div class="col-6 form-group">
+      <label >Nombre</label>
+      <input type="text" class="form-control" placeholder="Ingrese nombre" formControlName="name" >  
+    </div>
+    <div class="col-6 form-group">
+      <label >Apellido</label>
+      <input type="text" class="form-control" placeholder="Ingrese apellido" formControlName="lastName" >  
+    </div>
+    <div class="col-6 form-group">
+      <label >Fecha Nacimiento</label>
+      <input type="date" class="form-control" placeholder="Ingrese fecha nacimiento" formControlName="birthDate" >  
+    </div>
+    <div class="col-6 form-group">
+      <label >Fecha Nacimiento</label>
+      <input type="number" class="form-control"  placeholder="Ingrese valor ganado" formControlName="valueGain" >  
+    </div>
+    <br>
+    <div *ngFor="let opcion of estadoCivil">
+      <input type="checkbox" [checked]="formPersona.controls['estadoCivil'].value === opcion.id" (change)="seleccionarOpcion(opcion.id)">
+      <label>{{ opcion.descripcion }}</label>
+    </div>
+    <br>
+
+    <button class="btn btn-success" type="submit">Actualizar</button>
+  </form>
+</div>
